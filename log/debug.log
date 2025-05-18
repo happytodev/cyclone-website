@@ -1,0 +1,104 @@
+exception [0;38;5;208m"[1;38;5;113mClass "App\Commands\Yaml" not found[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"[1;38;5;113mUndefined array key "slug"[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"[1;38;5;113mToo few arguments to function App\models\Post::updateOrCreate(), 1 passed in /Users/happytodev/Dev/cyclone-website/app/Commands/Cyclone.php on line 141 and exactly 2 expected[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"[1;38;5;113mCreation of dynamic property App\models\Post::$file_path is deprecated[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"[1;38;5;113mCreation of dynamic property App\models\Post::$file_path is deprecated[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"""[m
+[0;38;5;208m[1;38;5;113mSQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: posts.markdown_file_path[m[0;38;5;208m\n[m
+[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113mINSERT INTO `posts` (`user_id`, `title`, `slug`, `tldr`)[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113mVALUES (?, ?, ?, ?)[m[0;38;5;208m\n[m
+[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113mbindings: [[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    null,[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "Lorem ipsum",[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "lorem-ipsum",[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m][0;38;5;208m[m
+[0;38;5;208m"""[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"[1;38;5;113mCreation of dynamic property App\models\Post::$markdwon_file_path is deprecated[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"""[m
+[0;38;5;208m[1;38;5;113mSQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: posts.created_at[m[0;38;5;208m\n[m
+[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113mINSERT INTO `posts` (`user_id`, `title`, `slug`, `tldr`, `markdown_file_path`)[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113mVALUES (?, ?, ?, ?, ?)[m[0;38;5;208m\n[m
+[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113mbindings: [[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    null,[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "Lorem ipsum",[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "lorem-ipsum",[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "\/Users\/happytodev\/Dev\/cyclone-website\/app\/Commands\/..\/..\/content\/blog\/lorem.md"[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m][0;38;5;208m[m
+[0;38;5;208m"""[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"[1;38;5;113mCreation of dynamic property App\models\Post::$publisheded_at is deprecated[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"""[m
+[0;38;5;208m[1;38;5;113mSQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: posts.user_id[m[0;38;5;208m\n[m
+[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113mINSERT INTO `posts` (`user_id`, `title`, `slug`, `tldr`, `markdown_file_path`, `created_at`, `published_at`)[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113mVALUES (?, ?, ?, ?, ?, ?, ?)[m[0;38;5;208m\n[m
+[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113mbindings: [[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    null,[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "Lorem ipsum",[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "lorem-ipsum",[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "\/Users\/happytodev\/Dev\/cyclone-website\/app\/Commands\/..\/..\/content\/blog\/lorem.md",[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "2025-05-18 10:18:29",[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m    "2025-05-18 10:18:29"[m[0;38;5;208m\n[m
+[0;38;5;208m[1;38;5;113m][0;38;5;208m[m
+[0;38;5;208m"""[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"[1;38;5;113mCreation of dynamic property App\models\Post::$user_id is deprecated[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"[1;38;5;113mCall to undefined method App\Commands\Cyclone::writeln()[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"[1;38;5;113mCannot assign int to property App\models\Post::$created_at of type ?DateTimeImmutable[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"[1;38;5;113mCannot assign false to property App\models\Post::$created_at of type ?DateTimeImmutable[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"[1;38;5;113mCall to undefined function App\Commands\query()[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+exception [0;38;5;208m"[1;38;5;113mCall to undefined method Tempest\Database\Builder\QueryBuilders\QueryBuilder::execute()[0;38;5;208m"[m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39
+context [0;38;5;208m[][m
+/Users/happytodev/Dev/cyclone-website/vendor/tempest/framework/packages/console/src/Exceptions/ConsoleExceptionHandler.php:39

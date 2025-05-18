@@ -1,0 +1,32 @@
+<?php
+
+namespace App\models;
+
+use App\Auth\User;
+use Tempest\Database\IsDatabaseModel;
+
+final class Post
+{
+    use IsDatabaseModel;
+
+    public ?User $user = null;
+
+    public string $title;
+
+    public string $slug;
+
+    public string $tldr;
+
+    public string $markdown_file_path;
+
+    public ?\DateTimeImmutable $created_at; 
+    
+    public ?\DateTimeImmutable $published_at; 
+
+    public int $user_id;
+
+    public function getContent(): string
+    {
+        return file_get_contents($this->markdown_file_path);
+    }
+}

@@ -1,0 +1,9 @@
+.cache/
+.idea/
+vendor/
+.env
+composer.lock
+node_modules
+
+vite-tempest
+public/build/

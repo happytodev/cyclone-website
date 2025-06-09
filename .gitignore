@@ -7,3 +7,5 @@ node_modules
 
 vite-tempest
 public/build/
+log/debug.log
+public/cron.log

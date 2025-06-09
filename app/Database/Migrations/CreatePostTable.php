@@ -20,7 +20,7 @@ final class CreatePostTable implements DatabaseMigration
             ->varchar('slug')->unique()
             ->varchar('tldr')
             ->varchar('markdown_file_path')
-            ->varchar('image', nullable: true)
+            ->varchar('cover_image', nullable: true)
             ->datetime('created_at')
             ->datetime('published_at', nullable: true)
             ->integer('user_id', unsigned: true);

@@ -8,8 +8,11 @@ use DateTimeImmutable;
 use Symfony\Component\Yaml\Yaml;
 use Tempest\Console\ConsoleCommand;
 use App\Repositories\PostRepository;
+use Tempest\Console\Schedule;
+use Tempest\Console\Scheduler\Every;
 
 use function Tempest\Database\Query;
+use function Tempest\Support\Arr\every;
 
 final readonly class Cyclone
 {
@@ -17,7 +20,43 @@ final readonly class Cyclone
 
     public function __construct()
     {
-        $this->postsDir = __DIR__ . '/../../content/blog';
+        $this->postsDir = 'content/blog';
+    }
+
+    #[ConsoleCommand('cyclone:add-blog-post')]
+    public function addblogpost()
+    {
+        $repository = new PostRepository();
+
+        // $postCounter = $repository->getTotalPosts() + 1;
+
+        $user = User::select()
+            ->where('email == ?', 'happytodev@gmail.com')
+            ->first();
+
+        for ($i = 0; $i < 30; $i++) {
+            $post = Post::create(
+                title: 'Lorem ipsum ' . $i,
+                slug: 'lorem-ipsum-' . $i,
+                tldr: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',
+                markdown_file_path: 'lorem.md',
+                user: $user,
+                created_at: new DateTimeImmutable(),
+                published_at: new DateTimeImmutable()
+            );
+        }
+    }
+
+    #[ConsoleCommand('cyclone:add-user')]
+    public function adduser(): void
+    {
+        $user = new User(
+            name: 'Happy',
+            email: 'happytodev@gmail.com',
+        )
+            ->setPassword('password')
+            ->save()
+            ->grantPermission('admin');
     }
 
     /**
@@ -25,7 +64,7 @@ final readonly class Cyclone
      *
      * @return void
      */
-    #[ConsoleCommand]
+    #[ConsoleCommand('cyclone:assets')]
     public function assets(): void
     {
         // List of files to be copied with their sources and destinations
@@ -71,52 +110,18 @@ final readonly class Cyclone
         }
     }
 
-    #[ConsoleCommand]
+    #[ConsoleCommand('cyclone:info')]
     public function info(): void
     {
         echo "Cyclone v1.0.0-alpha.1\n";
     }
 
-    #[ConsoleCommand]
-    public function adduser(): void
-    {
-        $user = new User(
-            name: 'Happy',
-            email: 'happytodev@gmail.com',
-        )
-            ->setPassword('password')
-            ->save()
-            ->grantPermission('admin');
-    }
-
-    #[ConsoleCommand]
-    public function addblogpost()
+    #[Schedule(Every::HOUR)]
+    #[ConsoleCommand('cyclone:sync-posts')]
+    public function syncPosts(): void
     {
         $repository = new PostRepository();
 
-        // $postCounter = $repository->getTotalPosts() + 1;
-
-        $user = User::select()
-            ->where('email == ?', 'happytodev@gmail.com')
-            ->first();
-
-        for ($i = 0; $i < 30; $i++) {
-            $post = Post::create(
-                title: 'Lorem ipsum ' . $i,
-                slug: 'lorem-ipsum-' . $i,
-                tldr: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',
-                markdown_file_path: 'lorem.md',
-                user: $user,
-                created_at: new DateTimeImmutable(),
-                published_at: new DateTimeImmutable()
-            );
-        }
-    }
-
-
-    #[ConsoleCommand]
-    public function syncPosts(): void
-    {
         $files = glob($this->postsDir . '/*.md');
         $existingSlugs = [];
 
@@ -124,8 +129,7 @@ final readonly class Cyclone
             $slug = pathinfo($file, PATHINFO_FILENAME);
             $content = file_get_contents($file);
             $frontmatter = $this->parseFrontmatter($content);
-            //dd($frontmatter);
-            // dd($frontmatter['created_at'], DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $frontmatter['created_at']));
+
             $postData = [
                 'slug' => $frontmatter['slug'],
                 'title' => $frontmatter['title'],
@@ -134,24 +138,22 @@ final readonly class Cyclone
                 'markdown_file_path' => $file,
                 'created_at' => DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $frontmatter['created_at']),
                 'published_at' => DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $frontmatter['published_at']),
-                'user_id' => 1, // check to get the current user_id
+                'user_id' => $frontmatter['user_id'],
+                'cover_image' => $frontmatter['cover_image'] ?? '',
             ];
 
-            // dd($postData);
 
-            // Gérer la catégorie
+            // Manage category
             // $category = Category::firstOrCreate(['name' => $frontmatter['category']]);
             // $postData['category_id'] = $category->id;
 
-            // Créer ou mettre à jour le post
+            // Create or update the post
             $result = Post::updateOrCreate(
                 ['slug' => $postData["slug"]],
                 $postData
             );
 
-            // dd($result);
-
-            // Gérer les tags
+            // Manage tags
             // $tags = explode(',', $frontmatter['tags']);
             // $tagIds = [];
             // foreach ($tags as $tagName) {
@@ -164,39 +166,12 @@ final readonly class Cyclone
         }
 
         // Delete posts without a matching file
-
-        // Vérifier si le tableau n'est pas vide pour éviter une erreur SQL
-        if (empty($existingSlugs)) {
-            // Cas particulier : supprimer tous les posts si $existingSlugs est vide
-            $queryBuilder = query(Post::class)
-                ->delete()
-                ->allowAll(); // Permet de supprimer toutes les lignes
-        } else {
-            // Générer les placeholders pour le NOT IN
-            $placeholders = implode(', ', array_fill(0, count($existingSlugs), '?'));
-            $condition = "slug NOT IN ($placeholders)";
-
-            // Construire la requête DELETE
-            $queryBuilder = query(Post::class)
-                ->delete()
-                ->where($condition, ...$existingSlugs);
-        }
-
-        // Générer la requête SQL
-        $query = $queryBuilder->build();
-
-        // Afficher la requête pour débogage (facultatif)
-        echo $query->getSql(); // Exemple : DELETE FROM `posts` WHERE `slug` NOT IN (?, ?, ?)
-        print_r($query->bindings); // Vérifier les bindings
-
-        // Exécuter la requête
-        // Note : Remplacez "execute()" par la méthode réelle de TempestPHP si différente
-        $result = $query->execute();
+        $result = $repository->deletePostsWithoutMachingFile($existingSlugs);
 
         if ($result) {
-            echo "Posts supprimés avec succès.";
+            echo "Posts successfully deleted.";
         } else {
-            echo "Aucune suppression effectuée.";
+            echo "No deletions made.";
         }
 
 

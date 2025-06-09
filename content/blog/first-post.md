@@ -4,6 +4,8 @@ slug: "first-post"
 tldr: "A trully really first post on Cyclone."
 created_at: "2025-05-18 12:43:00"
 published_at: "2025-05-18 13:43:00"
+user_id: 1
+cover_image: "first-post.webp"
 ---
 # Hello World!
 
